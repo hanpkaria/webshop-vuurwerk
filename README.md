@@ -1,2 +1,2 @@
-# webshop-vuurwerk
-Himanshu Jaoquim Delvin
+# webshop-veerwerk
+Himanshu Joaquim Delvin
