@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registreren - SkyBlaze FireWorks</title>
+    <title>Registreren - Firework Ablaze</title>
 </head>
 <body>
-    <h1>Registreren bij SkyBlaze FireWorks</h1>
+    <h1>Registreren bij Firework Ablaze</h1>
     <form action="register_process.php" method="post">
         <label for="first_name">Voornaam:</label><br>
         <input type="text" id="first_name" name="first_name" required><br><br>

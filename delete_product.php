@@ -64,7 +64,7 @@
             border-radius: 3px;
             cursor: pointer;
         }
-        .back-to-index-button {
+        .back-to-assortment-button {
             display: block;
             margin-top: 20px;
             padding: 10px 20px;
@@ -92,37 +92,29 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // SQL-query om alle producten op te halen
-        $sql = "SELECT * FROM product";
-        $result = $conn->query($sql);
+        // Controleren of er een product-ID is ontvangen via POST
+        if(isset($_POST['product_id'])) {
+            // Product-ID ophalen uit de POST-gegevens
+            $product_id = $_POST['product_id'];
 
-        // Controleren of er resultaten zijn
-        if ($result->num_rows > 0) {
-            // Producten weergeven
-            while($row = $result->fetch_assoc()) {
-                echo '<div class="product">';
-                echo '<img src="afbeelding.jpg" alt="' . $row["product_name"] . '">';
-                echo '<div class="product-info">';
-                echo '<div class="product-name">' . $row["product_name"] . '</div>';
-                echo '<div class="product-price">€' . $row["price"] . '</div>';
-                echo '<div class="product-description">' . $row["description"] . '</div>';
-                // Delete knop toevoegen
-                echo '<form method="post" action="delete_product.php">';
-                echo '<input type="hidden" name="product_id" value="' . $row["id"] . '">';
-                echo '<button type="submit" class="delete-product-button">Verwijder</button>';
-                echo '</form>';
-                echo '</div>';
-                echo '</div>';
+            // SQL-query om het product te verwijderen
+            $sql = "DELETE FROM product WHERE id = $product_id";
+
+            // Het product verwijderen
+            if ($conn->query($sql) === TRUE) {
+                echo "Product succesvol verwijderd";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
             }
         } else {
-            echo "Geen producten gevonden";
+            echo "Geen product-ID ontvangen";
         }
 
         // Sluit de databaseverbinding
         $conn->close();
         ?>
-        
-        <a href="INDEX.PHP" class="back-to-index-button">Terug naar index</a>
+
+        <a href="assortiment.php" class="back-to-assortment-button">Terug naar assortiment</a>
     </div>
 </body>
 </html>
