@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assortiment Vuurwerk</title>
     <style>
+        /* Voeg hier eventuele CSS-stijlen toe */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -55,27 +56,6 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        .delete-product-button {
-            display: inline-block;
-            padding: 5px 10px;
-            background-color: #dc3545;
-            color: #fff;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-        .back-to-index-button {
-            display: block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
@@ -106,11 +86,6 @@
                 echo '<div class="product-name">' . $row["product_name"] . '</div>';
                 echo '<div class="product-price">€' . $row["price"] . '</div>';
                 echo '<div class="product-description">' . $row["description"] . '</div>';
-                // Delete knop toevoegen
-                echo '<form method="post" action="delete_product.php">';
-                echo '<input type="hidden" name="product_id" value="' . $row["id"] . '">';
-                echo '<button type="submit" class="delete-product-button">Verwijder</button>';
-                echo '</form>';
                 echo '</div>';
                 echo '</div>';
             }
@@ -121,8 +96,6 @@
         // Sluit de databaseverbinding
         $conn->close();
         ?>
-        
-        <a href="INDEX.PHP" class="back-to-index-button">Terug naar index</a>
     </div>
 </body>
 </html>
